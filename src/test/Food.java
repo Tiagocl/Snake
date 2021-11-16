@@ -11,15 +11,15 @@ public class Food {
     }
 
     public void random_spawn(Snake player) {
+        boolean onSnake = true;
+        while(onSnake) {
+            onSnake = false;
 
+            x = (int)(Math.random() * Game.width - 1);
+            y = (int)(Math.random() * Game.height - 1);
 
-        boolean onSnake = false;
-
-        while (!onSnake) {
-            x = (int) (Math.random() * Game.width);
-            y = (int) (Math.random() * Game.height);
-            for (Rectangle r : player.getBody()) {
-                if (r.x == x && r.y == y) {
+            for(Rectangle r : player.getBody()){
+                if(r.x == x && r.y == y) {
                     onSnake = true;
                 }
             }
@@ -30,8 +30,15 @@ public class Food {
         return x;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
     public int getY() {
         return y;
     }
-}
 
+    public void setY(int y) {
+        this.y = y;
+    }
+}
